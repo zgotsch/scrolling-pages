@@ -11,7 +11,7 @@ reset = '\x1B[0m'
 pkg = JSON.parse fs.readFileSync('./package.json')
 testCmd = pkg.scripts.test
 startCmd = pkg.scripts.start
-  
+
 
 spawned_processes = []
 cleanup = (e) ->
@@ -39,7 +39,6 @@ spawn_with_stdout = (command, args, callback) ->
   spawned
 
 
-
 # Compiles app.coffee and src directory to the app directory
 build = (callback) ->
   spawn_with_stdout 'coffee', ['-c','-b', '-o', 'app', 'src'], callback
@@ -60,37 +59,20 @@ test = (callback) ->
     log err.message, red
     log 'Mocha is not installed - try npm install mocha -g', red
 
-build_redis = (callback) ->
-  spawn_with_stdout 'make', ['-C', 'redis'], callback
-
-run_redis = (callback) ->
-  build_redis (err) ->
-    if not err
-      spawn_with_stdout './redis/src/redis-server', ['--port', 6300], callback
-
 task 'build', ->
   build -> log "Built!", green
 
 task 'test', 'Run Mocha tests', ->
   build -> test -> log "Tests Complete!", green
 
-task 'make-redis', 'Build the redis install', ->
-  build_redis -> log "Built redis!", green
-
-task 'redis', 'Run the redis server', ->
-  run_redis -> log "Redis has finished", green
-
 task 'go', 'Start dev server/compilation', ->
   # watch_coffee
   coffee = spawn_with_stdout 'coffee' , ['-c', '-b', '-w', '-o', 'app', 'src']
   log 'Watching coffee files', green
-
-  do run_redis
-  log "Redis is running", green
 
   # watch_js
   spawn_with_stdout 'node', ['./node_modules/supervisor/lib/cli-wrapper.js','-w','app,views', '-e', 'js|jade', 'server']
 
   log 'Watching js files and running server', green
 
-  
+
