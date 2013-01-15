@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>Express Boilerplaye</title>
+        <%- css('bootstrap') %>
+        <%- css('style') %>
+    </head>
+    <body>
+        <div class="container.page-wrap">
+            <div class="row">
+                <div class="span10 offset2 page-title">
+                    <h1>Welcome to Node, Express, Bootstrap Boilerplate</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span10 offset2">
+                    <button class="the-button"><%= @action %></button>
+                </div>
+            </div>
+        </div>
+        <%- js('http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7/jquery.min.js') %>
+        <%- js('//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.3/underscore-min.js') %>
+        <%- js('bootstrap') %>
+        <%- js('add_module') %>
+        <%- js('app') %>
+    </body>
+
+</html>
