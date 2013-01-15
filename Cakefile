@@ -12,7 +12,6 @@ pkg = JSON.parse fs.readFileSync('./package.json')
 testCmd = pkg.scripts.test
 startCmd = pkg.scripts.start
 
-
 spawned_processes = []
 cleanup = (e) ->
     console.log e.message if e?.message?
@@ -37,7 +36,6 @@ spawn_with_stdout = (command, args, callback) ->
 
   spawned_processes.push {command, spawned}
   spawned
-
 
 # Compiles app.coffee and src directory to the app directory
 build = (callback) ->

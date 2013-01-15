@@ -3,7 +3,7 @@
 * Node v0.8.8
 * Express v3.x
 * CoffeeScript v1.3.3
-* Jade v0.26.0
+* Eco v1.1.x
 * Connect Assets v2.2.1
 
 ## Requirements
@@ -16,7 +16,7 @@
 
 Via npm: (`npm install`)
 * [Express](http://expressjs.com)
-* [Jade](http://jade-lang.com/)
+* [Eco](https://github.com/sstephenson/eco)
 * [connect-assets](http://github.com/TrevorBurnham/connect-assets)
 * [Mocha](http://visionmedia.github.com/mocha/)
 * [Should.Js](https://github.com/visionmedia/should.js/)
@@ -25,7 +25,7 @@ Via npm: (`npm install`)
 
 ### Local
 
-To build source files, build redis, and execute all servers (with automatic reloading on changes) just run:
+To build source files and run the server (with automatic reloading on changes) just run:
 
     cake go
 
@@ -34,7 +34,7 @@ To build source files, build redis, and execute all servers (with automatic relo
 To deploy to heroku (you will need a verified heroku account for redistogo):
 
     heroku create
-    heroku addons:add redistogo:nano
+    [Optional] heroku addons:add redistogo:nano
     git push heroku master
     heroku open
 
